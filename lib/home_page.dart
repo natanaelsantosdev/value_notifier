@@ -1,5 +1,6 @@
 import 'package:change_notifier/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HommePage extends StatefulWidget {
   const HommePage({super.key});
@@ -72,7 +73,7 @@ class _HommePageState extends State<HommePage> {
                   BoxShadow(
                     color: Colors.black.withOpacity(.03),
                     offset: const Offset(0, -5),
-                    blurRadius: 4,
+                    blurRadius: 5,
                   ),
                 ],
               ),
@@ -94,17 +95,24 @@ class _HommePageState extends State<HommePage> {
                     const SizedBox(
                       width: 16,
                     ),
-                    FloatingActionButton.small(
-                      onPressed: () {
-                        homeController.addName(
-                            name: homeController.nameController.text);
-                        homeController.nameController.clear();
+                    ValueListenableBuilder(
+                      valueListenable: homeController.botaoAdd,
+                      builder: (context, value, child) {
+                        return FloatingActionButton.small(
+                          onPressed: !value
+                              ? null
+                              : () {
+                                  homeController.addName(
+                                      name: homeController.nameController.text);
+                                  homeController.nameController.clear();
+                                },
+                          child: const Icon(
+                            Icons.add,
+                            //color: Colors.white,
+                          ),
+                          //backgroundColor: Colors.indigo,
+                        );
                       },
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                      backgroundColor: Colors.indigo,
                     ),
                   ],
                 ),
