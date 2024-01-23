@@ -1,4 +1,4 @@
-import 'package:change_notifier/my_home_page.dart';
+import 'package:change_notifier/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'ChangeNotifier',
       debugShowCheckedModeBanner: false,
-      home: MyHommePage(),
+      home: HommePage(),
     );
   }
 }
